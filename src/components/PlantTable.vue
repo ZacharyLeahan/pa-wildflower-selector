@@ -35,6 +35,12 @@
 
     <div class="plant-table-scroll" tabindex="0">
       <table class="plant-table">
+        <colgroup>
+          <col class="favorite-column" />
+          <col class="common-name-column" />
+          <col class="scientific-name-column" />
+          <col v-for="column in visibleColumns" :key="column.key" :class="`${column.key}-column`" />
+        </colgroup>
         <thead>
           <tr>
             <th class="favorite-column"><span class="visually-hidden">Favorite</span></th>
@@ -236,13 +242,14 @@ export default {
   outline-offset: 2px;
 }
 .plant-table {
-  width: 100%;
-  min-width: 720px;
+  width: max-content;
+  min-width: max(100%, 720px);
   margin: 0;
   border-collapse: separate;
   border-spacing: 0;
   color: #1d2e26;
   font-size: 14px;
+  table-layout: fixed;
 }
 .plant-table th,
 .plant-table td {
@@ -282,15 +289,18 @@ th.favorite-column {
   background: #f3f1eb;
 }
 .common-name-column {
-  min-width: 160px;
+  width: 190px;
+  min-width: 190px;
   font-weight: 700;
 }
 .scientific-name-column {
-  min-width: 170px;
+  width: 200px;
+  min-width: 200px;
 }
 .height-column,
 .spread-column {
-  min-width: 86px;
+  width: 100px;
+  min-width: 100px;
   white-space: nowrap;
 }
 .sun-column,
@@ -298,11 +308,13 @@ th.favorite-column {
 .lifeCycle-column,
 .plantType-column,
 .flowerColor-column {
-  min-width: 120px;
+  width: 145px;
+  min-width: 145px;
 }
 .flowering-column,
 .family-column {
-  min-width: 150px;
+  width: 165px;
+  min-width: 165px;
 }
 .table-favorite {
   display: inline-flex;
