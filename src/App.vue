@@ -29,7 +29,7 @@ html {
 }
 .outer {
   position: relative;
-  padding-top: 48px;
+  padding-top: 0;
 }
 .menu-is-open .modal-cover {
   display: block;
